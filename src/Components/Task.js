@@ -121,7 +121,7 @@ export default class Task extends Component {
       <div>
         {this.state.isNewTask ? (
           <div>
-              <h4>Create Task</h4>
+            <h4>Create Task</h4>
             <form className="new-taskForm" onSubmit={this.handleSubmitTask}>
               <p>Task ID</p>
               <div className="input-field col s6">
@@ -214,7 +214,9 @@ export default class Task extends Component {
                         <tr key={idx}>
                           <td>{data.userId}</td>
                           <td>{data.title}</td>
-                          <td style={{textTransform : 'capitalize'}}>{data.completed.toString()}</td>
+                          <td style={{ textTransform: "capitalize" }}>
+                            {data.completed.toString()}
+                          </td>
                           <td>
                             <button
                               className="waves-effect waves-light btn red"

@@ -44,7 +44,7 @@ export default class Login extends Component {
     this.setState({ userError: "", passError: "" });
     if (this.valid()) {
       loginUtil();
-      this.props.history.push('/home')
+      this.props.history.push('/task')
     }
   };
 

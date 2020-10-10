@@ -15,15 +15,14 @@ export default class User extends Component {
 
   handlePassword = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    this.setState({
-      btnValue: "Save Password",
-    });
   };
 
   handleChangePassword = (e) => {
     if (this.state.btnValue === "Change Password") {
       this.setState({
         isDisable: false,
+        password: "",
+        btnValue: "Save Password",
       });
     } else {
       if (this.state.password === "") {
@@ -34,6 +33,7 @@ export default class User extends Component {
         this.setState({
           isDisable: true,
           btnValue: "Change Password",
+          passError: "",
         });
       }
     }
@@ -67,6 +67,7 @@ export default class User extends Component {
             disabled={this.state.isDisable}
           />
         </div>
+        <span className="fieldError">{this.state.passError}</span>
         <div className="user-buttons">
           <button
             value={this.state.btnValue}
@@ -77,7 +78,6 @@ export default class User extends Component {
           <button className="ml20" onClick={this.handleLogout}>
             Logout
           </button>
-          <span className="fieldError">{this.state.passError}</span>
         </div>
       </div>
     );
