@@ -6,7 +6,7 @@ export default class Navbar extends Component {
     super(props);
 
     this.state = {
-      isActive: 'home',
+      isActive: 'task',
     };
   }
   handleActive = (e) => {

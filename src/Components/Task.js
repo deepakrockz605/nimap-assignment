@@ -122,7 +122,7 @@ export default class Task extends Component {
         {this.state.isNewTask ? (
           <div>
               <h4>Create Task</h4>
-            <form onSubmit={this.handleSubmitTask}>
+            <form className="new-taskForm" onSubmit={this.handleSubmitTask}>
               <p>Task ID</p>
               <div className="input-field col s6">
                 <input

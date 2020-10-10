@@ -195,3 +195,8 @@ h4{
   font-size: 26px;
   font-weight: 600;
 }
+.new-taskForm p{
+  font-size: 16px;
+    font-weight: 600;
+    padding: 20px 0 5px;
+}
