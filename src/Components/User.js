@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { logoutUtil } from "./Util";
+import { connect } from "react-redux";
+import { newPasswordDetails } from "../Actions";
 
-export default class User extends Component {
+class User extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      password: "deepak123",
+      password: this.props.state.password,
       isDisable: true,
       btnValue: "Change Password",
       passError: "",
@@ -30,6 +32,7 @@ export default class User extends Component {
           passError: "Password Cannot be empty!!",
         });
       } else {
+        this.props.newPasswordDetails(this.state.password)
         this.setState({
           isDisable: true,
           btnValue: "Change Password",
@@ -83,3 +86,20 @@ export default class User extends Component {
     );
   }
 }
+
+
+const mapStateToProps = (state) => {
+  return {
+    state: state.data,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    newPasswordDetails: (data) => {
+      dispatch(newPasswordDetails(data));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(User);

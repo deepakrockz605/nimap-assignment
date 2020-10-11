@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { loginUtil } from "./Util";
+import { loginDetails } from "../Actions";
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -22,14 +24,14 @@ export default class Login extends Component {
         userError: "Username can not be empty!!",
         passError: "Password can not be empty!!",
       });
-    } else if (this.state.username=== "") {
+    } else if (this.state.username === "") {
       this.setState({ userError: "Invalid Username" });
     } else if (this.state.password === "") {
       this.setState({ passError: "Password can not be empty!!" });
     } else {
       if (this.state.username !== "deepakPawar") {
         this.setState({ userError: "Incorrect Email" });
-      } else if (this.state.password !== "deepak123") {
+      } else if (this.state.password !== this.props.state.password) {
         this.setState({
           passError: "Incorrect Password !!",
         });
@@ -44,7 +46,7 @@ export default class Login extends Component {
     this.setState({ userError: "", passError: "" });
     if (this.valid()) {
       loginUtil();
-      this.props.history.push('/task')
+      this.props.history.push("/task");
     }
   };
 
@@ -107,3 +109,19 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    state: state.data,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginDetails: () => {
+      dispatch(loginDetails());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
